@@ -228,6 +228,11 @@ test('SqlString.escape', {
     assert.equal(SqlString.escape('Super\''), "'Super'''");
   },
 
+  'double quotes get escaped': function() {
+    assert.equal(SqlString.escape('Sup"er'), "'Sup\\\"er'");
+    assert.equal(SqlString.escape('Super"'), "'Super\\\"'");
+  },
+
   'dates are converted to YYYY-MM-DD HH:II:SS.sss': function() {
     const expected = '2012-05-07 11:42:03.002';
     const date = new Date(2012, 4, 7, 11, 42, 3, 2);
